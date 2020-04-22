@@ -2,6 +2,7 @@ package sample;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +19,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.swing.*;
+
 public class Controller {
 
     @FXML
@@ -27,21 +30,45 @@ public class Controller {
      * Initializes the controller class.
      */
 
+    private void openPortal() throws IOException{
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
+        Scene scene = new Scene(root);
+        stage.setTitle("Register");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     @FXML
     private void login(ActionEvent event){
         // TODO: Login check
-        System.out.println(password.getText());
-        System.out.println(user.getText());
+        try
+        {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conexion = DriverManager.getConnection ("jdbc:mysql://172.17.0.1:3306/Hotel","root", "claveroot");
+            // Preparamos la consulta
+            Statement s = conexion.createStatement();
+            ResultSet rs = s.executeQuery ("select * from Usuaris");
+            while (rs.next())
+            {
+                if(rs.getString(1).equals(user.getText()) && rs.getString(2).equals(password.getText())){
+                    openPortal();
+                }
+            }
+            conexion.close();
 
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void openRegister(ActionEvent event) throws IOException {
-        // TODO: Open register FXML
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
         Scene scene = new Scene(root);
-        stage.setTitle("Programa de reserves");
+        stage.setTitle("Register");
         stage.setScene(scene);
         stage.show();
     }

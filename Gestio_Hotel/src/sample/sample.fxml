@@ -11,6 +11,7 @@
 <AnchorPane id="AnchorPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="500" prefWidth="620" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
         <TextField fx:id="user" layoutX="234.0" layoutY="185.0" />
+        <PasswordField fx:id="password" layoutX="235.0" layoutY="223.0" />
         <Text layoutX="186.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User:" />
         <Text layoutX="162.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
         <Button fx:id="loginButton" layoutX="234.0" layoutY="272.0" mnemonicParsing="false" onAction="#login" prefHeight="32.0" prefWidth="62.0" text="Login" />
@@ -20,6 +21,5 @@
                 <Image url="@hotelIcon.png" />
             </image>
         </ImageView>
-        <PasswordField fx:id="password" layoutX="235.0" layoutY="223.0" />
     </children>
 </AnchorPane>
