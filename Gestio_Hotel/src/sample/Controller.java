@@ -32,7 +32,7 @@ public class Controller {
 
     private void openPortal() throws IOException{
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("portal.fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("Register");
         stage.setScene(scene);
@@ -90,4 +90,5 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
+
 }
