@@ -39,11 +39,21 @@ public class Controller {
         stage.show();
     }
 
+    private void failLogin() throws IOException{
+        Stage stage = new Stage();
+        Label label = new Label("No te has podido Loguear.\nComprueba tu usuario o contraseña");
+        Scene scene = new Scene(label, 300, 100);
+        stage.setTitle("Error");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     @FXML
     private void login(ActionEvent event){
         // TODO: Login check
         try
         {
+            int comprobar = 0;
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conexion = DriverManager.getConnection ("jdbc:mysql://172.17.0.1:3306/Hotel","root", "claveroot");
             // Preparamos la consulta
@@ -52,8 +62,16 @@ public class Controller {
             while (rs.next())
             {
                 if(rs.getString(1).equals(user.getText()) && rs.getString(2).equals(password.getText())){
-                    openPortal();
+                    comprobar = 1;
+                }else{
+                    comprobar = 0;
                 }
+            }
+
+            if(comprobar == 1){
+                openPortal();
+            }else {
+                failLogin();
             }
             conexion.close();
 

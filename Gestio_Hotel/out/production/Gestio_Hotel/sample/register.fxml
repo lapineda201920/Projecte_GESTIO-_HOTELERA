@@ -13,10 +13,11 @@
          <effect>
             <InnerShadow color="#8ddd9f" />
          </effect></TextField>
-      <TextField fx:id="contr" layoutX="47.0" layoutY="97.0">
+      <PasswordField fx:id="contr" layoutX="47.0" layoutY="97.0">
          <effect>
             <InnerShadow color="#8ddd9f" />
-         </effect></TextField>
+         </effect>
+      </PasswordField>
       <TextField fx:id="nom" layoutX="47.0" layoutY="162.0">
          <effect>
             <InnerShadow color="#8ddd9f" />
