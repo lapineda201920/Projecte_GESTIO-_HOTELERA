@@ -8,6 +8,7 @@
    <children>
       <Button fx:id="registroButton" layoutX="14.0" layoutY="38.0" mnemonicParsing="false" onAction="#openGestioHab" prefHeight="42.0" prefWidth="170.0" text="Gestió d'Habitacions " />
       <Button layoutX="14.0" layoutY="107.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="170.0" onAction="#openReservaHab" text="Reserva d'Habitacions" />
+      <Button layoutX="14.0" layoutY="175.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" onAction="#openGestioUsuaris" text="Gestió Usuaris" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="386.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="133.0" fitWidth="170.0" layoutX="416.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
          <image>

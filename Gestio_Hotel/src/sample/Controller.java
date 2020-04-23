@@ -30,13 +30,24 @@ public class Controller {
      * Initializes the controller class.
      */
 
-    private void openPortal(ActionEvent event) throws IOException{
-        Parent blah = FXMLLoader.load(getClass().getResource("portal.fxml"));
-        Scene scene = new Scene(blah);
-        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setTitle("Portal");
-        appStage.setScene(scene);
-        appStage.show();
+    private void openPortal(ActionEvent event, String usuari) throws IOException{
+
+        if (usuari.equals("admin")){
+            Parent blah = FXMLLoader.load(getClass().getResource("portalAdmin.fxml"));
+            Scene scene = new Scene(blah);
+            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            appStage.setTitle("Portal Admin");
+            appStage.setScene(scene);
+            appStage.show();
+        }
+        else{
+            Parent blah = FXMLLoader.load(getClass().getResource("portal.fxml"));
+            Scene scene = new Scene(blah);
+            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            appStage.setTitle("Portal");
+            appStage.setScene(scene);
+            appStage.show();
+        }
     }
 
     private void failLogin() throws IOException{
@@ -54,6 +65,7 @@ public class Controller {
         try
         {
             int comprobar = 0;
+            String usuari = "";
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conexion = DriverManager.getConnection ("jdbc:mysql://172.17.0.1:3306/Hotel","root", "claveroot");
             // Preparamos la consulta
@@ -63,6 +75,7 @@ public class Controller {
             {
                 if(rs.getString(1).equals(user.getText()) && rs.getString(2).equals(password.getText())){
                     comprobar = 1;
+                    usuari = rs.getString(1);
                 }
                 else{
                     //NOTHING TO DO
@@ -70,7 +83,7 @@ public class Controller {
             }
 
             if(comprobar == 1){
-                openPortal(event);
+                openPortal(event, usuari);
             }else {
                 failLogin();
             }
