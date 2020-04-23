@@ -33,6 +33,16 @@ public class RegisterController {
     }
 
     @FXML
+    private void tornarSample(ActionEvent event) throws IOException{
+        Parent blah = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Scene scene = new Scene(blah);
+        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setTitle("Portal");
+        appStage.setScene(scene);
+        appStage.show();
+    }
+
+    @FXML
     private TextField usuari,contr,nom,cognoms,dni,nacionalitat,tlf,email;
 
     @FXML

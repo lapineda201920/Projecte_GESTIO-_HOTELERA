@@ -30,13 +30,13 @@ public class Controller {
      * Initializes the controller class.
      */
 
-    private void openPortal() throws IOException{
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("portal.fxml"));
-        Scene scene = new Scene(root);
-        stage.setTitle("Register");
-        stage.setScene(scene);
-        stage.show();
+    private void openPortal(ActionEvent event) throws IOException{
+        Parent blah = FXMLLoader.load(getClass().getResource("portal.fxml"));
+        Scene scene = new Scene(blah);
+        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setTitle("Portal");
+        appStage.setScene(scene);
+        appStage.show();
     }
 
     private void failLogin() throws IOException{
@@ -63,13 +63,14 @@ public class Controller {
             {
                 if(rs.getString(1).equals(user.getText()) && rs.getString(2).equals(password.getText())){
                     comprobar = 1;
-                }else{
-                    comprobar = 0;
+                }
+                else{
+                    //NOTHING TO DO
                 }
             }
 
             if(comprobar == 1){
-                openPortal();
+                openPortal(event);
             }else {
                 failLogin();
             }
@@ -83,12 +84,12 @@ public class Controller {
 
     @FXML
     private void openRegister(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
-        Scene scene = new Scene(root);
-        stage.setTitle("Register");
-        stage.setScene(scene);
-        stage.show();
+        Parent blah = FXMLLoader.load(getClass().getResource("register.fxml"));
+        Scene scene = new Scene(blah);
+        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setTitle("Registre");
+        appStage.setScene(scene);
+        appStage.show();
     }
 
 }
