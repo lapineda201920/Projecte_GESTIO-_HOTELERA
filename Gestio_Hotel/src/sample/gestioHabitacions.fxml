@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="500" prefWidth="990.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GestioHabitacionsController">
+<AnchorPane id="AnchorPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="500" prefWidth="774.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GestioHabitacionsController">
     <children>
       <Label layoutX="14.0" layoutY="11.0" prefHeight="57.0" prefWidth="119.0" text="Habitació">
          <font>
@@ -33,25 +35,46 @@
             <ChoiceBox id="tipo" layoutX="134.0" layoutY="322.0" prefWidth="150.0" />
          </children>
       </Pane>
-      <Pane layoutX="316.0" layoutY="70.0" prefHeight="416.0" prefWidth="660.0" style="-fx-background-color: #ffff99;">
+      <Pane layoutX="316.0" layoutY="70.0" prefHeight="416.0" prefWidth="451.0" style="-fx-background-color: #ffff99;">
          <children>
-            <TextField layoutX="14.0" layoutY="17.0" prefHeight="26.0" prefWidth="199.0" promptText="Buscar..." />
-            <Button layoutX="216.0" layoutY="17.0" mnemonicParsing="false" text="Buscar" />
-             <TableView fx:id="tableID" layoutX="14.0" layoutY="65.0" prefHeight="341.0" prefWidth="636.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="65.0">
+            <TextField layoutX="14.0" layoutY="30.0" prefHeight="26.0" prefWidth="44.0" promptText="Mín" fx:id="min" />
+            <Button layoutX="341.0" layoutY="17.0" mnemonicParsing="false" text="Filtrar" onAction="#filtrarHabitacions" />
+             <TableView fx:id="tableID" layoutX="14.0" layoutY="88.0" prefHeight="318.0" prefWidth="430.0" tableMenuButtonVisible="false" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="65.0">
                  <columns>
-                     <TableColumn fx:id="tID" minWidth="20.0" prefWidth="67.0" text="Número" />
-                     <TableColumn fx:id="tPis" prefWidth="53.0" text="Piso" />
-                     <TableColumn fx:id="tDescripcio" prefWidth="93.0" text="Descripció" />
-                     <TableColumn fx:id="tCaracteristiques" prefWidth="129.0" text="Característiques" />
-                     <TableColumn fx:id="tPreuDiari" text="Preu Diari" />
-                     <TableColumn fx:id="tEstada" prefWidth="66.0" text="Estada" />
-                     <TableColumn fx:id="ttipoHabitacio" prefWidth="118.0" text="Tipo Habitació" />
+                     <TableColumn fx:id="tNumero" minWidth="20.0" prefWidth="75.0" text="Número" />
+                     <TableColumn fx:id="tPis" prefWidth="64.0" text="Pis" />
+                     <TableColumn fx:id="tPreu" prefWidth="88.0" text="Preu Diari" />
+                     <TableColumn fx:id="tEstada" prefWidth="75.0" text="Estada" />
+                     <TableColumn fx:id="tTipo" prefWidth="120.0" text="Tipo Habitació" />
                  </columns>
              </TableView>
+             <ChoiceBox layoutX="118.0" layoutY="30.0" prefHeight="26.0" prefWidth="93.0" fx:id="estat">
+                 <items>
+                     <FXCollections fx:factory="observableArrayList" >
+                         <String fx:value="Ocupat" />
+                         <String fx:value="Disponible" />
+                         <String fx:value="En manteniment" />
+                     </FXCollections>
+                 </items>
+             </ChoiceBox>
+             <ChoiceBox layoutX="230.0" layoutY="30.0" prefHeight="26.0" prefWidth="93.0" fx:id="tipo">
+                 <items>
+                     <FXCollections fx:factory="observableArrayList" >
+                         <String fx:value="Individual" />
+                         <String fx:value="Doble" />
+                         <String fx:value="Familiar" />
+                     </FXCollections>
+                 </items>
+             </ChoiceBox>
+            <Label layoutX="147.0" layoutY="6.0" text="Estat" />
+            <Label layoutX="259.0" layoutY="6.0" text="Tipo" />
+            <TextField layoutX="65.0" layoutY="30.0" prefHeight="26.0" prefWidth="44.0" promptText="Màx" fx:id="max" />
+            <Label layoutX="47.0" layoutY="6.0" text="Preu" />
+            <Button layoutX="341.0" layoutY="56.0" mnemonicParsing="false" text="Netajar Filtre" />
          </children>
       </Pane>
 
-              <ImageView fitHeight="57.0" fitWidth="68.0" layoutX="919.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+              <ImageView fitHeight="57.0" fitWidth="68.0" layoutX="703.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@hotelIcon.png" />
             </image>
