@@ -65,8 +65,8 @@ public class RegisterController {
             }
 
             if(comprobant == 0){
-                String query = " insert into `Usuaris`(`Usuari`, `Password`, `Nom`, `Cognoms`, `DNI/Passaport`, `Nacionalitat`, `Telèfon`, `e-mail`)"
-                        + " values (?,?,?,?, ?, ?, ?, ?)";
+                String query = " insert into `Usuaris`(`Usuari`, `Password`, `Nom`, `Cognoms`, `DNI/Passaport`, `Nacionalitat`, `Telèfon`, `e-mail`,`estado`)"
+                        + " values (?,?,?,?,?,?,?,?,false)";
                 // create the mysql insert preparedstatement
                 PreparedStatement preparedStmt = conexion.prepareStatement(query);
                 preparedStmt.setString (1, usuari.getText());

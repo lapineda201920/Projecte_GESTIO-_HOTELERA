@@ -21,7 +21,7 @@ CREATE TABLE `Usuaris` (
   `Nacionalitat` varchar(255) COLLATE utf8_bin NOT NULL,
   `Telèfon` varchar(255) COLLATE utf8_bin NOT NULL,
   `e-mail` varchar(255) COLLATE utf8_bin NOT NULL,
-  `estado` varchar(10) COLLATE utf8_bin NOT NULL,
+  `estado` tinyint(1) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`Usuari`)
 );
 
