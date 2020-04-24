@@ -5,9 +5,53 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="500" prefWidth="620" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GestioHabitacionsController">
+<AnchorPane id="AnchorPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="500" prefWidth="990.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GestioHabitacionsController">
     <children>
-        <ImageView fitHeight="107.0" fitWidth="152.0" layoutX="499.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="14.0" layoutY="11.0" prefHeight="57.0" prefWidth="119.0" text="Habitació">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Pane layoutX="14.0" layoutY="68.0" prefHeight="416.0" prefWidth="292.0" style="-fx-background-color: #ffcc66;">
+         <children>
+            <Label layoutX="14.0" layoutY="38.0" text="Número:" />
+            <Label layoutX="14.0" layoutY="66.0" text="Pis:" />
+            <Label layoutX="15.0" layoutY="91.0" text="Descripció:" />
+            <Label layoutX="17.0" layoutY="167.0" text="Característiques:" />
+            <Label layoutX="14.0" layoutY="259.0" text="Preu Diari:" />
+            <Label layoutX="19.0" layoutY="292.0" text="Estat:" />
+            <Label layoutX="20.0" layoutY="327.0" text="Tipo Habitació" />
+            <Button layoutX="20.0" layoutY="363.0" mnemonicParsing="false" text="Nou" />
+            <Button layoutX="106.0" layoutY="363.0" mnemonicParsing="false" text="Editar" />
+            <Button layoutX="199.0" layoutY="363.0" mnemonicParsing="false" text="Cancelar" />
+            <TextField layoutX="114.0" layoutY="33.0" />
+            <TextField layoutX="114.0" layoutY="254.0" />
+            <TextArea layoutX="18.0" layoutY="109.0" prefHeight="57.0" prefWidth="269.0" />
+            <TextArea layoutX="16.0" layoutY="192.0" prefHeight="57.0" prefWidth="269.0" />
+            <ChoiceBox layoutX="134.0" layoutY="61.0" prefWidth="150.0" />
+            <ChoiceBox layoutX="134.0" layoutY="287.0" prefWidth="150.0" />
+            <ChoiceBox layoutX="134.0" layoutY="322.0" prefWidth="150.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="316.0" layoutY="70.0" prefHeight="416.0" prefWidth="660.0" style="-fx-background-color: #ffff99;">
+         <children>
+            <TextField layoutX="14.0" layoutY="17.0" prefHeight="26.0" prefWidth="199.0" promptText="Buscar..." />
+            <Button layoutX="216.0" layoutY="17.0" mnemonicParsing="false" text="Buscar" />
+             <TableView fx:id="tableID" layoutX="14.0" layoutY="65.0" prefHeight="341.0" prefWidth="636.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="65.0">
+                 <columns>
+                     <TableColumn fx:id="tID" minWidth="20.0" prefWidth="67.0" text="Número" />
+                     <TableColumn fx:id="tPis" prefWidth="53.0" text="Piso" />
+                     <TableColumn fx:id="tDescripcio" prefWidth="93.0" text="Descripció" />
+                     <TableColumn fx:id="tCaracteristiques" prefWidth="129.0" text="Característiques" />
+                     <TableColumn fx:id="tPreuDiari" text="Preu Diari" />
+                     <TableColumn fx:id="tEstada" prefWidth="66.0" text="Estada" />
+                     <TableColumn fx:id="ttipoHabitacio" prefWidth="118.0" text="Tipo Habitació" />
+                 </columns>
+             </TableView>
+         </children>
+      </Pane>
+
+              <ImageView fitHeight="57.0" fitWidth="68.0" layoutX="919.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@hotelIcon.png" />
             </image>
