@@ -24,13 +24,13 @@
             <Button layoutX="20.0" layoutY="363.0" mnemonicParsing="false" text="Nou" />
             <Button layoutX="106.0" layoutY="363.0" mnemonicParsing="false" text="Editar" />
             <Button layoutX="199.0" layoutY="363.0" mnemonicParsing="false" text="Cancelar" />
-            <TextField layoutX="114.0" layoutY="33.0" />
-            <TextField layoutX="114.0" layoutY="254.0" />
-            <TextArea layoutX="18.0" layoutY="109.0" prefHeight="57.0" prefWidth="269.0" />
-            <TextArea layoutX="16.0" layoutY="192.0" prefHeight="57.0" prefWidth="269.0" />
-            <ChoiceBox layoutX="134.0" layoutY="61.0" prefWidth="150.0" />
-            <ChoiceBox layoutX="134.0" layoutY="287.0" prefWidth="150.0" />
-            <ChoiceBox layoutX="134.0" layoutY="322.0" prefWidth="150.0" />
+            <TextField id="numero" layoutX="114.0" layoutY="33.0" />
+            <TextField id="preu" layoutX="114.0" layoutY="254.0" />
+            <TextArea id="descripcio" layoutX="18.0" layoutY="109.0" prefHeight="57.0" prefWidth="269.0" />
+            <TextArea id="caracteristiques" layoutX="16.0" layoutY="192.0" prefHeight="57.0" prefWidth="269.0" />
+            <ChoiceBox id="pis" layoutX="134.0" layoutY="61.0" prefWidth="150.0" />
+            <ChoiceBox id="estat" layoutX="134.0" layoutY="287.0" prefWidth="150.0" />
+            <ChoiceBox id="tipo" layoutX="134.0" layoutY="322.0" prefWidth="150.0" />
          </children>
       </Pane>
       <Pane layoutX="316.0" layoutY="70.0" prefHeight="416.0" prefWidth="660.0" style="-fx-background-color: #ffff99;">

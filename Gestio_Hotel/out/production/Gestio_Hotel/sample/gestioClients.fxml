@@ -7,26 +7,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="416.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GestioClientsController">
    <children>
       <Button layoutX="14.0" layoutY="195.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="205.0" text="Alta" />
       <Button layoutX="14.0" layoutY="117.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="205.0" text="Editar" />
       <Button layoutX="14.0" layoutY="273.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="205.0" text="Eliminar" />
-      <TableView fx:id="tableID" layoutX="14.0" layoutY="65.0" prefHeight="341.0" prefWidth="636.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="65.0">
-         <columns>
-            <TableColumn fx:id="tID" minWidth="20.0" prefWidth="67.0" text="Id_client" />
-            <TableColumn fx:id="tNom" prefWidth="53.0" text="Nom" />
-            <TableColumn fx:id="tCognoms" prefWidth="93.0" text="Cognoms" />
-            <TableColumn fx:id="tDNI" prefWidth="129.0" text="DNI/Passaport" />
-            <TableColumn fx:id="tNacionalitat" text="Nacionalitat" />
-            <TableColumn fx:id="tTelèfon" prefWidth="66.0" text="telèfon" />
-            <TableColumn fx:id="tEmail" prefWidth="118.0" text="E-mail" />
-            <TableColumn fx:id="tOcupacio" prefWidth="118.0" text="Ocupació" />
-            <TableColumn fx:id="tEstat" prefWidth="118.0" text="Estat civil" />
-         </columns>
-      </TableView>
+      <ListView layoutX="251.0" layoutY="95.0" prefHeight="304.0" prefWidth="435.0" />
       <ImageView fitHeight="71.0" fitWidth="76.0" layoutX="611.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@hotelIcon.png" />
