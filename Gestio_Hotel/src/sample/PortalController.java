@@ -34,6 +34,16 @@ public class PortalController {
     }
 
     @FXML
+    private void openGestioClients() throws IOException{
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("gestioClients.fxml"));
+        Scene scene = new Scene(root);
+        stage.setTitle("Gestió Clients");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
     private void openReservaHab() throws IOException{
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("reservaHabitacions.fxml"));
