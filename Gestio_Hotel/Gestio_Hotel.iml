@@ -7,11 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../Repositorios-DAW/M3/UF6/Pr01/mysql-connector-java-8.0.19.jar!/" />
+          <root url="jar:///home/Repositorios-DAW/M3/UF6/Pr01/mysql-connector-java-8.0.19.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
