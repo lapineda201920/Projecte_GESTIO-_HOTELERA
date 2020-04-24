@@ -45,6 +45,22 @@ CREATE TABLE `Clientes` (
   PRIMARY KEY(`id_client`)
 );
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Habitacions`
+--
+
+DROP TABLE IF EXISTS `Habitacions`;
+CREATE TABLE `Habitacions` (
+  `id_hab` int(11) NOT NULL AUTO_INCREMENT,
+  `Número` int(11) NOT NULL,
+  `Planta` int(11) NOT NULL,
+  `Preu` int(11) NOT NULL,
+  `Estat` int(11) NOT NULL,
+  `Tipus` varchar(20) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id_hab`)
+);
 
 -- --------------------------------------------------------
 
@@ -61,25 +77,8 @@ CREATE TABLE `Reservas` (
   `data_sortida` date NOT NULL,
   `data_entrada` date NOT NULL,
   `fk_usuari` varchar(255) COLLATE utf8_bin NULL,
+  `fk_hab` int(11) NOT NULL,
   PRIMARY KEY (`id_reserva`),
-  FOREIGN KEY (`fk_usuari`) REFERENCES Usuaris(`Usuari`)
-);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `Habitacions`
---
-
-DROP TABLE IF EXISTS `Habitacions`;
-CREATE TABLE `Habitacions` (
-  `id_hab` int(11) NOT NULL AUTO_INCREMENT,
-  `Número` int(11) NOT NULL,
-  `Planta` int(11) NOT NULL,
-  `Preu` int(11) NOT NULL,
-  `Estat` int(11) NOT NULL,
-  `Tipus` varchar(20) COLLATE utf8_bin NOT NULL,
-  `fk_id_reserva` int(11) NULL,
-  PRIMARY KEY (`id_hab`),
-  FOREIGN KEY (`fk_id_reserva`) REFERENCES Reservas(`id_reserva`)
+  FOREIGN KEY (`fk_usuari`) REFERENCES Usuaris(`Usuari`),
+  FOREIGN KEY (`fk_hab`) REFERENCES Habitacions(`id_hab`)
 );
