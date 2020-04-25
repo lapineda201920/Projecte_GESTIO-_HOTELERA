@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.registerClientsController">
+    <children>
+        <TextField fx:id="nom" layoutX="47.0" layoutY="40.0">
+            <effect>
+                <InnerShadow color="#8ddd9f" />
+            </effect></TextField>
+        <TextField fx:id="cognoms" layoutX="47.0" layoutY="97.0">
+            <effect>
+                <InnerShadow color="#8ddd9f" />
+            </effect>
+        </TextField>
+        <TextField fx:id="dni" layoutX="47.0" layoutY="162.0">
+            <effect>
+                <InnerShadow color="#8ddd9f" />
+            </effect></TextField>
+        <TextField fx:id="nacionalitat" layoutX="47.0" layoutY="230.0">
+            <effect>
+                <InnerShadow color="#8ddd9f" />
+            </effect></TextField>
+        <TextField fx:id="telefon" layoutX="357.0" layoutY="40.0">
+            <effect>
+                <InnerShadow color="#8ddd9f" />
+            </effect></TextField>
+        <TextField fx:id="email" layoutX="357.0" layoutY="97.0">
+            <effect>
+                <InnerShadow color="#8ddd9f" />
+            </effect></TextField>
+        <TextField fx:id="ocupacio" layoutX="353.0" layoutY="162.0">
+            <effect>
+                <InnerShadow color="#8ddd9f" />
+            </effect></TextField>
+        <TextField fx:id="estat" layoutX="353.0" layoutY="230.0">
+            <effect>
+                <InnerShadow color="#8ddd9f" />
+            </effect></TextField>
+        <Text layoutX="74.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
+        <Text layoutX="74.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cognoms" />
+        <Text layoutX="74.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI/Passaport" />
+        <Text layoutX="71.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nacionalitat" wrappingWidth="74.61588287353516" />
+        <Text layoutX="357.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telèfon" />
+        <Text layoutX="357.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+        <Text layoutX="357.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ocupació" />
+        <Text layoutX="357.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estat" />
+        <Button fx:id="registroButton" layoutX="45.0" layoutY="303.0" mnemonicParsing="false" onAction="#register" prefHeight="32.0" prefWidth="479.0" text="Registrar-se" />
+        <Button layoutX="40.0" layoutY="353.0" mnemonicParsing="false" onAction="#tornarSample" text="&lt; Enrere" />
+    </children>
+</Pane>
