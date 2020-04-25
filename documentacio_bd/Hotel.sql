@@ -57,7 +57,7 @@ CREATE TABLE `Habitacions` (
   `Número` int(11) NOT NULL,
   `Planta` int(11) NOT NULL,
   `Preu` int(11) NOT NULL,
-  `Estat` int(11) NOT NULL,
+  `Estat` varchar(20) COLLATE utf8_bin NOT NULL,
   `Tipus` varchar(20) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id_hab`)
 );
