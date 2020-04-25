@@ -18,27 +18,48 @@
          <children>
             <Label layoutX="14.0" layoutY="38.0" text="Número:" />
             <Label layoutX="14.0" layoutY="66.0" text="Pis:" />
-            <Label layoutX="15.0" layoutY="91.0" text="Descripció:" />
-            <Label layoutX="17.0" layoutY="167.0" text="Característiques:" />
             <Label layoutX="14.0" layoutY="259.0" text="Preu Diari:" />
             <Label layoutX="19.0" layoutY="292.0" text="Estat:" />
             <Label layoutX="20.0" layoutY="327.0" text="Tipo Habitació" />
-            <Button layoutX="20.0" layoutY="363.0" mnemonicParsing="false" text="Nou" />
-            <Button layoutX="106.0" layoutY="363.0" mnemonicParsing="false" text="Editar" />
-            <Button layoutX="199.0" layoutY="363.0" mnemonicParsing="false" text="Cancelar" />
-            <TextField id="numero" layoutX="114.0" layoutY="33.0" />
-            <TextField id="preu" layoutX="114.0" layoutY="254.0" />
-            <TextArea id="descripcio" layoutX="18.0" layoutY="109.0" prefHeight="57.0" prefWidth="269.0" />
-            <TextArea id="caracteristiques" layoutX="16.0" layoutY="192.0" prefHeight="57.0" prefWidth="269.0" />
-            <ChoiceBox id="pis" layoutX="134.0" layoutY="61.0" prefWidth="150.0" />
-            <ChoiceBox id="estat" layoutX="134.0" layoutY="287.0" prefWidth="150.0" />
-            <ChoiceBox id="tipo" layoutX="134.0" layoutY="322.0" prefWidth="150.0" />
+            <Button layoutX="20.0" layoutY="363.0" mnemonicParsing="false" onAction="#afegirHabitacio" text="Nou" />
+            <Button layoutX="106.0" layoutY="363.0" mnemonicParsing="false" onAction="#editarHabitacio" text="Editar" />
+            <Button layoutX="199.0" layoutY="363.0" mnemonicParsing="false" onAction="#netejarHabitacio" text="Cancelar" />
+            <TextField fx:id="cNumero" layoutX="114.0" layoutY="33.0" />
+            <TextField fx:id="cPreu" layoutX="114.0" layoutY="254.0" />
+             <ChoiceBox fx:id="cPis" layoutX="134.0" layoutY="61.0" prefWidth="150.0" >
+                 <items>
+                     <FXCollections fx:factory="observableArrayList">
+                         <String fx:value="1" />
+                         <String fx:value="2" />
+                         <String fx:value="3" />
+                         <String fx:value="4" />
+                     </FXCollections>
+                 </items>
+             </ChoiceBox>
+             <ChoiceBox fx:id="cEstat" layoutX="134.0" layoutY="287.0" prefWidth="150.0" >
+                 <items>
+                     <FXCollections fx:factory="observableArrayList">
+                         <String fx:value="Ocupat" />
+                         <String fx:value="Disponible" />
+                         <String fx:value="En manteniment" />
+                     </FXCollections>
+                 </items>
+             </ChoiceBox>
+             <ChoiceBox fx:id="cTipo" layoutX="134.0" layoutY="322.0" prefWidth="150.0" >
+                 <items>
+                     <FXCollections fx:factory="observableArrayList">
+                         <String fx:value="Individual" />
+                         <String fx:value="Doble" />
+                         <String fx:value="Familiar" />
+                     </FXCollections>
+                 </items>
+             </ChoiceBox>
          </children>
       </Pane>
       <Pane layoutX="316.0" layoutY="70.0" prefHeight="416.0" prefWidth="451.0" style="-fx-background-color: #ffff99;">
          <children>
-            <TextField layoutX="14.0" layoutY="30.0" prefHeight="26.0" prefWidth="44.0" promptText="Mín" fx:id="min" />
-            <Button layoutX="341.0" layoutY="17.0" mnemonicParsing="false" text="Filtrar" onAction="#filtrarHabitacions" />
+            <TextField fx:id="min" layoutX="14.0" layoutY="30.0" prefHeight="26.0" prefWidth="44.0" promptText="Mín" />
+            <Button layoutX="341.0" layoutY="17.0" mnemonicParsing="false" onAction="#filtrarHabitacions" text="Filtrar" />
              <TableView fx:id="tableID" layoutX="14.0" layoutY="88.0" prefHeight="318.0" prefWidth="430.0" tableMenuButtonVisible="false" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="65.0">
                  <columns>
                      <TableColumn fx:id="tNumero" minWidth="20.0" prefWidth="75.0" text="Número" />
@@ -48,18 +69,18 @@
                      <TableColumn fx:id="tTipo" prefWidth="120.0" text="Tipo Habitació" />
                  </columns>
              </TableView>
-             <ChoiceBox layoutX="118.0" layoutY="30.0" prefHeight="26.0" prefWidth="93.0" fx:id="estat">
+             <ChoiceBox fx:id="estat" layoutX="118.0" layoutY="30.0" prefHeight="26.0" prefWidth="93.0">
                  <items>
-                     <FXCollections fx:factory="observableArrayList" >
+                     <FXCollections fx:factory="observableArrayList">
                          <String fx:value="Ocupat" />
                          <String fx:value="Disponible" />
                          <String fx:value="En manteniment" />
                      </FXCollections>
                  </items>
              </ChoiceBox>
-             <ChoiceBox layoutX="230.0" layoutY="30.0" prefHeight="26.0" prefWidth="93.0" fx:id="tipo">
+             <ChoiceBox fx:id="tipo" layoutX="230.0" layoutY="30.0" prefHeight="26.0" prefWidth="93.0">
                  <items>
-                     <FXCollections fx:factory="observableArrayList" >
+                     <FXCollections fx:factory="observableArrayList">
                          <String fx:value="Individual" />
                          <String fx:value="Doble" />
                          <String fx:value="Familiar" />
@@ -68,9 +89,9 @@
              </ChoiceBox>
             <Label layoutX="147.0" layoutY="6.0" text="Estat" />
             <Label layoutX="259.0" layoutY="6.0" text="Tipo" />
-            <TextField layoutX="65.0" layoutY="30.0" prefHeight="26.0" prefWidth="44.0" promptText="Màx" fx:id="max" />
+            <TextField fx:id="max" layoutX="65.0" layoutY="30.0" prefHeight="26.0" prefWidth="44.0" promptText="Màx" />
             <Label layoutX="47.0" layoutY="6.0" text="Preu" />
-            <Button layoutX="341.0" layoutY="56.0" mnemonicParsing="false" text="Netajar Filtre" />
+            <Button layoutX="341.0" layoutY="56.0" mnemonicParsing="false" onAction="#netajarFiltre" text="Netajar Filtre" />
          </children>
       </Pane>
 
