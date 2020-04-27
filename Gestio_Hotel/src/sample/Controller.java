@@ -41,7 +41,7 @@ public class Controller {
             appStage.show();
         }
         else{
-            if (estado.equals(1)) {
+            if (estado.equals("1")) {
                 Parent blah = FXMLLoader.load(getClass().getResource("portal.fxml"));
                 Scene scene = new Scene(blah);
                 Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
