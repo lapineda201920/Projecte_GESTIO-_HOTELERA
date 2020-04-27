@@ -7,7 +7,6 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PortalController">
    <children>
-      <Button fx:id="registroButton" layoutX="14.0" layoutY="38.0" mnemonicParsing="false" onAction="#openGestioHab" prefHeight="42.0" prefWidth="170.0" text="Gestió d'Habitacions " />
       <Button layoutX="14.0" layoutY="107.0" mnemonicParsing="false" onAction="#openReservaHab" prefHeight="42.0" prefWidth="170.0" text="Reserva d'Habitacions" />
       <Button layoutX="14.0" layoutY="171.0" mnemonicParsing="false" onAction="#openGestioClients" prefHeight="42.0" prefWidth="170.0" text="Gestió clients" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="386.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
