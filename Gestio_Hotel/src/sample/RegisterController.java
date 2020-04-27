@@ -34,10 +34,10 @@ public class RegisterController {
 
     @FXML
     private void tornarSample(ActionEvent event) throws IOException{
-        Parent blah = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent blah = FXMLLoader.load(getClass().getResource("gestioClients.fxml"));
         Scene scene = new Scene(blah);
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setTitle("Portal");
+        appStage.setTitle("Gestio clients");
         appStage.setScene(scene);
         appStage.show();
     }
@@ -47,7 +47,6 @@ public class RegisterController {
 
     @FXML
     private void register(ActionEvent event){
-
         try
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
