@@ -30,7 +30,7 @@ public class Controller {
      * Initializes the controller class.
      */
 
-    private void openPortal(ActionEvent event, String usuari) throws IOException{
+    private void openPortal(ActionEvent event, String usuari, String estado) throws IOException{
 
         if (usuari.equals("admin")){
             Parent blah = FXMLLoader.load(getClass().getResource("portalAdmin.fxml"));
@@ -41,12 +41,22 @@ public class Controller {
             appStage.show();
         }
         else{
-            Parent blah = FXMLLoader.load(getClass().getResource("portal.fxml"));
-            Scene scene = new Scene(blah);
-            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            appStage.setTitle("Portal");
-            appStage.setScene(scene);
-            appStage.show();
+            if (estado.equals("1")) {
+                Parent blah = FXMLLoader.load(getClass().getResource("portal.fxml"));
+                Scene scene = new Scene(blah);
+                Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                appStage.setTitle("Portal");
+                appStage.setScene(scene);
+                appStage.show();
+            }
+            else{
+                Stage stage = new Stage();
+                Label label = new Label("No estas acceptat!\nDemana al admin que t'accepti");
+                Scene scene = new Scene(label, 300, 100);
+                stage.setTitle("Error");
+                stage.setScene(scene);
+                stage.show();
+            }
         }
     }
 
@@ -65,7 +75,7 @@ public class Controller {
         try
         {
             int comprobar = 0;
-            String usuari = "";
+            String usuari = "", estado= "";
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conexion = DriverManager.getConnection ("jdbc:mysql://172.17.0.1:3306/Hotel","root", "claveroot");
             // Preparamos la consulta
@@ -76,6 +86,7 @@ public class Controller {
                 if(rs.getString(1).equals(user.getText()) && rs.getString(2).equals(password.getText())){
                     comprobar = 1;
                     usuari = rs.getString(1);
+                    estado = rs.getString("estado");
                 }
                 else{
                     //NOTHING TO DO
@@ -83,7 +94,7 @@ public class Controller {
             }
 
             if(comprobar == 1){
-                openPortal(event, usuari);
+                openPortal(event, usuari, estado);
             }else {
                 failLogin();
             }
