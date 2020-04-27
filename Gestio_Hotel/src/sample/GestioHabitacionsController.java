@@ -1,5 +1,11 @@
 package sample;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,6 +19,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -245,5 +254,77 @@ public class GestioHabitacionsController implements Initializable {
         cTipo.getSelectionModel().clearSelection();
     }
 
+    @FXML
+    private void pdf() throws IOException{
+
+        // PÀGINES ON HE TROBAT INFORMACIÓ
+        // https://stackoverflow.com/questions/33385442/how-to-write-data-from-a-tableview-to-the-pdf
+        // https://www.youtube.com/watch?v=kUAgb16SVws
+
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conexion = DriverManager.getConnection ("jdbc:mysql://172.17.0.1:3306/Hotel","root", "claveroot");
+
+            // PREPAREM LA CONSULTA
+            Statement s = conexion.createStatement();
+            ResultSet rs = s.executeQuery ("SELECT * FROM Habitacions");
+
+            // CREEM L'ARXIU PDF
+            FileOutputStream arxiu = new FileOutputStream("llista_habitacions.pdf");
+            Document doc = new Document();
+            PdfWriter.getInstance(doc, arxiu);
+            doc.open();
+
+            PdfPTable report_table = new PdfPTable(6);
+            PdfPCell table_cell;
+
+            // CAPÇALERA
+            doc.add(new Paragraph("Llista d'Habitacions\n\n"));
+            table_cell = new PdfPCell(new Phrase("id_hab"));
+            report_table.addCell(table_cell);
+            table_cell = new PdfPCell(new Phrase("Número"));
+            report_table.addCell(table_cell);
+            table_cell = new PdfPCell(new Phrase("Planta"));
+            report_table.addCell(table_cell);
+            table_cell = new PdfPCell(new Phrase("Preu"));
+            report_table.addCell(table_cell);
+            table_cell = new PdfPCell(new Phrase("Estat"));
+            report_table.addCell(table_cell);
+            table_cell = new PdfPCell(new Phrase("Tipus"));
+            report_table.addCell(table_cell);
+
+            while (rs.next()) {
+
+                String id = rs.getString(1);
+                table_cell = new PdfPCell(new Phrase(id));
+                report_table.addCell(table_cell);
+                String numero = rs.getString(2);
+                table_cell = new PdfPCell(new Phrase(numero));
+                report_table.addCell(table_cell);
+                String planta = rs.getString(3);
+                table_cell = new PdfPCell(new Phrase(planta));
+                report_table.addCell(table_cell);
+                String preu = rs.getString(4);
+                table_cell = new PdfPCell(new Phrase(preu));
+                report_table.addCell(table_cell);
+                String estat = rs.getString(5);
+                table_cell = new PdfPCell(new Phrase(estat));
+                report_table.addCell(table_cell);
+                String tipus = rs.getString(6);
+                table_cell = new PdfPCell(new Phrase(tipus));
+                report_table.addCell(table_cell);
+            }
+
+            doc.add(report_table);
+            doc.close();
+            conexion.close();
+
+        }
+        catch (Exception e) {
+
+            e.printStackTrace();
+        }
+    }
 
 }

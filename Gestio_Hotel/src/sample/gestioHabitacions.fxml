@@ -14,19 +14,19 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Pane layoutX="14.0" layoutY="68.0" prefHeight="416.0" prefWidth="292.0" style="-fx-background-color: #ffcc66;">
+      <Pane layoutX="14.0" layoutY="68.0" prefHeight="284.0" prefWidth="292.0" style="-fx-background-color: #ffcc66;">
          <children>
             <Label layoutX="14.0" layoutY="38.0" text="Número:" />
             <Label layoutX="14.0" layoutY="66.0" text="Pis:" />
-            <Label layoutX="14.0" layoutY="259.0" text="Preu Diari:" />
-            <Label layoutX="19.0" layoutY="292.0" text="Estat:" />
-            <Label layoutX="20.0" layoutY="327.0" text="Tipo Habitació" />
-            <Button layoutX="20.0" layoutY="363.0" mnemonicParsing="false" onAction="#afegirHabitacio" text="Nou" />
-            <Button layoutX="106.0" layoutY="363.0" mnemonicParsing="false" onAction="#editarHabitacio" text="Editar" />
-            <Button layoutX="199.0" layoutY="363.0" mnemonicParsing="false" onAction="#netejarHabitacio" text="Cancelar" />
+            <Label layoutX="14.0" layoutY="116.0" text="Preu Diari:" />
+            <Label layoutX="18.0" layoutY="152.0" text="Estat:" />
+            <Label layoutX="17.0" layoutY="192.0" text="Tipo Habitació" />
+            <Button layoutX="26.0" layoutY="243.0" mnemonicParsing="false" onAction="#afegirHabitacio" text="Nou" />
+            <Button layoutX="106.0" layoutY="243.0" mnemonicParsing="false" onAction="#editarHabitacio" text="Editar" />
+            <Button layoutX="199.0" layoutY="243.0" mnemonicParsing="false" onAction="#netejarHabitacio" text="Cancelar" />
             <TextField fx:id="cNumero" layoutX="114.0" layoutY="33.0" />
-            <TextField fx:id="cPreu" layoutX="114.0" layoutY="254.0" />
-             <ChoiceBox fx:id="cPis" layoutX="134.0" layoutY="61.0" prefWidth="150.0" >
+            <TextField fx:id="cPreu" layoutX="114.0" layoutY="111.0" />
+             <ChoiceBox fx:id="cPis" layoutX="134.0" layoutY="61.0" prefWidth="150.0">
                  <items>
                      <FXCollections fx:factory="observableArrayList">
                          <String fx:value="1" />
@@ -36,7 +36,7 @@
                      </FXCollections>
                  </items>
              </ChoiceBox>
-             <ChoiceBox fx:id="cEstat" layoutX="134.0" layoutY="287.0" prefWidth="150.0" >
+             <ChoiceBox fx:id="cEstat" layoutX="134.0" layoutY="147.0" prefWidth="150.0">
                  <items>
                      <FXCollections fx:factory="observableArrayList">
                          <String fx:value="Ocupat" />
@@ -45,7 +45,7 @@
                      </FXCollections>
                  </items>
              </ChoiceBox>
-             <ChoiceBox fx:id="cTipo" layoutX="134.0" layoutY="322.0" prefWidth="150.0" >
+             <ChoiceBox fx:id="cTipo" layoutX="134.0" layoutY="187.0" prefWidth="150.0">
                  <items>
                      <FXCollections fx:factory="observableArrayList">
                          <String fx:value="Individual" />
@@ -100,5 +100,14 @@
                 <Image url="@hotelIcon.png" />
             </image>
         </ImageView>
+      <Pane layoutX="14.0" layoutY="364.0" prefHeight="119.0" prefWidth="292.0" style="-fx-background-color: #ff6666;">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Importar-ho en ...">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Button layoutX="14.0" layoutY="60.0" mnemonicParsing="false" text="PDF" onAction="#pdf" />
+         </children></Pane>
     </children>
 </AnchorPane>
