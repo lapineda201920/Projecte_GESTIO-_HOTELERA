@@ -23,9 +23,18 @@ import javax.swing.*;
 
 public class RegisterController {
 
-    private void failRegister() throws IOException{
+    private void failRegister(String error) throws IOException{
         Stage stage = new Stage();
-        Label label = new Label("No te has podido registrar");
+        Label label = new Label(error);
+        Scene scene = new Scene(label, 420, 100);
+        stage.setTitle("Register");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private void correctRegister() throws IOException{
+        Stage stage = new Stage();
+        Label label = new Label("Usuari registrat, esperi la validació del administrador");
         Scene scene = new Scene(label, 220, 100);
         stage.setTitle("Register");
         stage.setScene(scene);
@@ -57,13 +66,21 @@ public class RegisterController {
             Statement s = conexion.createStatement();
             ResultSet rs = s.executeQuery ("select Usuari from Usuaris");
             int comprobant = 0;
+            int comprobantLong = 0;
             while (rs.next()){
                 if(rs.getString(1).equals(usuari.getText())) {
                     comprobant = 1;
                 }
             }
 
-            if(comprobant == 0){
+            if(contr.getText().length() < 8){
+                comprobantLong = 1;
+            }else{
+                // NOTHING TO DO
+            }
+
+
+            if(comprobant == 0 && comprobantLong == 0){
                 String query = " insert into `Usuaris`(`Usuari`, `Password`, `Nom`, `Cognoms`, `DNI/Passaport`, `Nacionalitat`, `Telèfon`, `e-mail`,`estado`)"
                         + " values (?,?,?,?,?,?,?,?,false)";
                 // create the mysql insert preparedstatement
@@ -78,9 +95,12 @@ public class RegisterController {
                 preparedStmt.setString (8, email.getText());
 
                 preparedStmt.execute();
+                correctRegister();
                 System.out.println("registrado!");
+            }else if(comprobant == 1){
+                failRegister("Usuari ja registrat");
             }else{
-                failRegister();
+                failRegister("Contrasenya necesita 8 caracters");
             }
             conexion.close();
 
