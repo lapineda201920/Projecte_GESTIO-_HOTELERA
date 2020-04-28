@@ -74,11 +74,13 @@ CREATE TABLE `Reservas` (
   `Tipo` varchar(20) COLLATE utf8_bin NOT NULL,
   `Cost` int(11) NOT NULL,
   `Estat reserva` varchar(20) COLLATE utf8_bin NOT NULL,
-  `data_sortida` date NOT NULL,
   `data_entrada` date NOT NULL,
-  `fk_usuari` varchar(255) COLLATE utf8_bin NULL,
+  `hora_entrada` varchar(20) COLLATE utf8_bin NULL,
+  `data_sortida` date NOT NULL,
+  `hora_sortida` varchar(20) COLLATE utf8_bin NULL,
+  `fk_client` int(11) NOT NULL,
   `fk_hab` int(11) NOT NULL,
   PRIMARY KEY (`id_reserva`),
-  FOREIGN KEY (`fk_usuari`) REFERENCES Usuaris(`Usuari`),
+  FOREIGN KEY (`fk_client`) REFERENCES Clientes(`id_client`),
   FOREIGN KEY (`fk_hab`) REFERENCES Habitacions(`id_hab`)
 );

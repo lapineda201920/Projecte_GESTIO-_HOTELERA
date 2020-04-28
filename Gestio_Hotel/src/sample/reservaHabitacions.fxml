@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="500" prefWidth="988.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ReservaHabitacionsController">
+<AnchorPane id="AnchorPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="500" prefWidth="1265.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ReservaHabitacionsController">
     <children>
         <Label layoutX="14.0" layoutY="11.0" prefHeight="57.0" prefWidth="252.0" text="Reserva d'Habitacions">
             <font>
@@ -18,84 +18,66 @@
             <children>
                 <Label layoutX="14.0" layoutY="14.0" text="Número Habitació:" />
                 <Label layoutX="15.0" layoutY="50.0" text="Client:" />
-                <Label layoutX="15.0" layoutY="86.0" text="Treballador:" />
-                <Label layoutX="11.0" layoutY="205.0" text="Estat Reserva:" />
                 <Label layoutX="12.0" layoutY="132.0" text="Tipo Reserva:" />
-                <Button layoutX="15.0" layoutY="361.0" mnemonicParsing="false"  text="Nou" />
-                <Button layoutX="106.0" layoutY="361.0" mnemonicParsing="false"  text="Editar" />
-                <Button layoutX="189.0" layoutY="361.0" mnemonicParsing="false"  text="Cancelar" />
-                <TextField fx:id="cPreu" layoutX="134.0" layoutY="164.0" prefHeight="26.0" prefWidth="150.0" />
-                <ChoiceBox fx:id="cTipo" layoutX="134.0" layoutY="200.0" prefWidth="150.0">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Individual" />
-                            <String fx:value="Doble" />
-                            <String fx:value="Familiar" />
-                        </FXCollections>
-                    </items>
-                </ChoiceBox>
+                <Button layoutX="15.0" layoutY="361.0" mnemonicParsing="false" text="Nou" />
+                <Button layoutX="106.0" layoutY="361.0" mnemonicParsing="false" text="Editar" />
+                <Button layoutX="189.0" layoutY="361.0" mnemonicParsing="false" text="Cancelar" />
+                <TextField fx:id="tCost" layoutX="134.0" layoutY="164.0" prefHeight="26.0" prefWidth="150.0" />
+
             <Label layoutX="14.0" layoutY="169.0" text="Cost:" />
             <Label layoutX="14.0" layoutY="232.0" text="Data ingrés:" />
             <Label layoutX="12.0" layoutY="296.0" text="Data sortida:" />
-            <DatePicker layoutX="19.0" layoutY="255.0" prefHeight="26.0" prefWidth="150.0" />
-            <DatePicker layoutX="19.0" layoutY="318.0" prefHeight="26.0" prefWidth="150.0" />
-            <ChoiceBox fx:id="cPis1" layoutX="175.0" layoutY="9.0" prefHeight="26.0" prefWidth="103.0">
+            <DatePicker fx:id="dDataIngres" layoutX="19.0" layoutY="255.0" prefHeight="26.0" prefWidth="150.0" />
+            <DatePicker fx:id="dDataSortida" layoutX="19.0" layoutY="318.0" prefHeight="26.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="cTipoReserva" layoutX="134.0" layoutY="127.0" prefHeight="26.0" prefWidth="150.0">
                <items>
                   <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="1" />
-                     <String fx:value="2" />
-                     <String fx:value="3" />
-                     <String fx:value="4" />
+                     <String fx:value="Avançat" />
+                     <String fx:value="Pendent" />
                   </FXCollections>
                </items>
             </ChoiceBox>
-            <ChoiceBox fx:id="cPis11" layoutX="134.0" layoutY="127.0" prefHeight="26.0" prefWidth="150.0">
+            <TextField fx:id="tHoraIngres" layoutX="181.0" layoutY="255.0" prefHeight="26.0" prefWidth="103.0" />
+            <TextField fx:id="tHoraSortida" layoutX="181.0" layoutY="318.0" prefHeight="26.0" prefWidth="103.0" />
+            <TextField fx:id="tClient" disable="true" layoutX="94.0" layoutY="45.0" prefHeight="26.0" prefWidth="150.0" />
+            <Button layoutX="249.0" layoutY="45.0" mnemonicParsing="false" text="..." />
+            <TextField fx:id="tNumeroHabitacio" disable="true" layoutX="155.0" layoutY="9.0" prefHeight="26.0" prefWidth="89.0" />
+            <Button layoutX="249.0" layoutY="9.0" mnemonicParsing="false" text="..." />
+            <Label layoutX="14.0" layoutY="200.0" text="Estat Reserva:" />
+            <ChoiceBox fx:id="cEstatReserva" layoutX="134.0" layoutY="195.0" prefHeight="26.0" prefWidth="150.0">
                <items>
                   <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="1" />
-                     <String fx:value="2" />
-                     <String fx:value="3" />
-                     <String fx:value="4" />
+                     <String fx:value="Avançat" />
+                     <String fx:value="Pendent" />
                   </FXCollections>
                </items>
             </ChoiceBox>
-            <TextField fx:id="cPreu1" layoutX="136.0" layoutY="81.0" prefHeight="26.0" prefWidth="150.0" />
-            <TextField fx:id="cPreu11" layoutX="181.0" layoutY="255.0" prefHeight="26.0" prefWidth="103.0" />
-            <TextField fx:id="cPreu111" layoutX="181.0" layoutY="318.0" prefHeight="26.0" prefWidth="103.0" />
-            <TextField fx:id="cPreu12" layoutX="136.0" layoutY="45.0" prefHeight="26.0" prefWidth="150.0" />
             </children>
         </Pane>
-        <Pane layoutX="316.0" layoutY="70.0" prefHeight="416.0" prefWidth="660.0" style="-fx-background-color: #ffff99;">
+        <Pane layoutX="316.0" layoutY="70.0" prefHeight="416.0" prefWidth="940.0" style="-fx-background-color: #ffff99;">
             <children>
-                <TextField fx:id="min" layoutX="14.0" layoutY="30.0" prefHeight="26.0" prefWidth="103.0" promptText="Pere..." />
-                <Button layoutX="341.0" layoutY="17.0" mnemonicParsing="false"  text="Filtrar" />
-                <TableView fx:id="tableID" layoutX="14.0" layoutY="88.0" prefHeight="318.0" prefWidth="634.0" tableMenuButtonVisible="false" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="65.0">
+                <TextField fx:id="tNomClient" layoutX="14.0" layoutY="30.0" prefHeight="26.0" prefWidth="103.0" promptText="Pere..." />
+                <Button layoutX="128.0" layoutY="30.0" mnemonicParsing="false" onAction="#filtrarReserves" text="Filtrar" />
+                <TableView fx:id="tableIDReserva" layoutX="14.0" layoutY="88.0" prefHeight="318.0" prefWidth="912.0" tableMenuButtonVisible="false" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="65.0">
                     <columns>
-                        <TableColumn fx:id="tNumero" minWidth="20.0" prefWidth="90.0" text="ID Reserva" />
-                  <TableColumn prefWidth="108.0" text="ID Habitació" />
-                  <TableColumn minWidth="0.0" prefWidth="68.0" text="Client" />
-                        <TableColumn fx:id="tPis" minWidth="0.0" prefWidth="59.0" text="Tipo" />
-                        <TableColumn fx:id="tPreu" prefWidth="74.0" text="Cost" />
-                        <TableColumn fx:id="tEstada" prefWidth="109.0" text="Data Entrada" />
-                        <TableColumn fx:id="tTipo" prefWidth="106.0" text="Data Sortida" />
+                        <TableColumn fx:id="tableIDR" minWidth="20.0" prefWidth="90.0" text="ID Reserva" />
+                        <TableColumn fx:id="tableIDH" prefWidth="96.0" text="ID Habitació" />
+                        <TableColumn fx:id="tableClient" minWidth="0.0" prefWidth="71.0" text="Client" />
+                        <TableColumn fx:id="tableTipo" minWidth="0.0" prefWidth="65.0" text="Tipo" />
+                        <TableColumn fx:id="tableEstat" prefWidth="94.0" text="Estat" />
+                        <TableColumn fx:id="tableCost" prefWidth="58.0" text="Cost" />
+                        <TableColumn fx:id="tableDE" prefWidth="109.0" text="Data Entrada" />
+                        <TableColumn fx:id="tableHE" prefWidth="106.0" text="Hora Entrada" />
+                        <TableColumn fx:id="tableDS" prefWidth="107.0" text="Data Sortida" />
+                        <TableColumn fx:id="tableHS" prefWidth="106.0" text="Hora Sortida" />
                     </columns>
                 </TableView>
-                <ChoiceBox fx:id="tipo" layoutX="157.0" layoutY="30.0" prefHeight="26.0" prefWidth="122.0">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Individual" />
-                            <String fx:value="Doble" />
-                            <String fx:value="Familiar" />
-                        </FXCollections>
-                    </items>
-                </ChoiceBox>
-                <Label layoutX="177.0" layoutY="6.0" text="Estat Reserva" />
                 <Label layoutX="28.0" layoutY="6.0" text="Nom CLient" />
-                <Button layoutX="341.0" layoutY="56.0" mnemonicParsing="false"  text="Netajar Filtre" />
+                <Button layoutX="216.0" layoutY="30.0" mnemonicParsing="false" onAction="#netajarFiltre" text="Netajar Filtre" />
             </children>
         </Pane>
 
-        <ImageView fitHeight="57.0" fitWidth="68.0" layoutX="917.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="57.0" fitWidth="68.0" layoutX="1199.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@hotelIcon.png" />
             </image>
