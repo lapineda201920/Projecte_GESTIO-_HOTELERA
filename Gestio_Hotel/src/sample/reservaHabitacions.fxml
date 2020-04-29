@@ -19,9 +19,9 @@
                 <Label layoutX="14.0" layoutY="14.0" text="Número Habitació:" />
                 <Label layoutX="15.0" layoutY="50.0" text="Client:" />
                 <Label layoutX="12.0" layoutY="132.0" text="Tipo Reserva:" />
-                <Button layoutX="15.0" layoutY="361.0" mnemonicParsing="false" text="Nou" />
+                <Button layoutX="15.0" layoutY="361.0" mnemonicParsing="false" onAction="#afegirReserva" text="Nou" />
                 <Button layoutX="106.0" layoutY="361.0" mnemonicParsing="false" text="Editar" />
-                <Button layoutX="189.0" layoutY="361.0" mnemonicParsing="false" text="Cancelar" />
+                <Button layoutX="189.0" layoutY="361.0" mnemonicParsing="false" onAction="#netejarCreacioReserva" text="Cancelar" />
                 <TextField fx:id="tCost" layoutX="134.0" layoutY="164.0" prefHeight="26.0" prefWidth="150.0" />
 
             <Label layoutX="14.0" layoutY="169.0" text="Cost:" />
@@ -48,7 +48,7 @@
                <items>
                   <FXCollections fx:factory="observableArrayList">
                      <String fx:value="Anul·lada" />
-                     <String fx:value="En ús" />
+                      <String fx:value="En ús" />
                       <String fx:value="Finalitzada" />
                   </FXCollections>
                </items>

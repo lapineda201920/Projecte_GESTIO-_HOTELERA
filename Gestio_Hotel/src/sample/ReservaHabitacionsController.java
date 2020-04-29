@@ -209,5 +209,45 @@ public class ReservaHabitacionsController implements Initializable {
         tClient.setText(resultat);
     }
 
+    @FXML
+    private void netejarCreacioReserva() throws IOException {
 
+        tNumeroHabitacio.clear();
+        tClient.clear();
+        tCost.clear();
+        tHoraIngres.clear();
+        tHoraSortida.clear();
+        cTipoReserva.getSelectionModel().clearSelection();
+        cEstatReserva.getSelectionModel().clearSelection();
+        dDataIngres.getEditor().clear();
+        dDataSortida.getEditor().clear();
+    }
+
+    @FXML
+    private void afegirReserva(ActionEvent event) throws IOException {
+
+        try
+        {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conexion = DriverManager.getConnection ("jdbc:mysql://172.17.0.1:3306/Hotel","root", "claveroot");
+
+            // PREPAREM LA CONSULTA
+            Statement s = conexion.createStatement();
+            s.executeUpdate ("INSERT INTO `Reservas` (`id_reserva`, `Tipo`, `Cost`, `Estat reserva`, `data_entrada`, `hora_entrada`, `data_sortida`, `hora_sortida`, `fk_client`, `fk_hab`) VALUES (NULL, '" + cTipoReserva.getValue() + "', '" + tCost.getText() + "', '" + cEstatReserva.getValue() + "', '" + dDataIngres.getValue() + "', '" + tHoraIngres.getText() + "', '" + dDataSortida.getValue() + "', '" + tHoraSortida.getText() + "', '" + tClient.getText() + "', '" + tNumeroHabitacio.getText() + "') ");
+
+            conexion.close();
+
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        // RECARREGUEM LA PÀGINA PERQUÈ SE'NS MOSTRIN ELS CANVIS
+        Parent blah = FXMLLoader.load(getClass().getResource("reservaHabitacions.fxml"));
+        Scene scene = new Scene(blah);
+        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setTitle("Reserva Habitacions");
+        appStage.setScene(scene);
+        appStage.show();
+    }
 }
