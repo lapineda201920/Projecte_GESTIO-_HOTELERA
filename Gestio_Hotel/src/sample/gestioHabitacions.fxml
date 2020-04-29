@@ -62,6 +62,7 @@
             <Button layoutX="341.0" layoutY="17.0" mnemonicParsing="false" onAction="#filtrarHabitacions" text="Filtrar" />
              <TableView fx:id="tableID" layoutX="14.0" layoutY="88.0" prefHeight="318.0" prefWidth="430.0" tableMenuButtonVisible="false" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="65.0">
                  <columns>
+                     <TableColumn fx:id="tID" minWidth="20.0" prefWidth="75.0" text="ID" />
                      <TableColumn fx:id="tNumero" minWidth="20.0" prefWidth="75.0" text="Número" />
                      <TableColumn fx:id="tPis" prefWidth="64.0" text="Pis" />
                      <TableColumn fx:id="tPreu" prefWidth="88.0" text="Preu Diari" />

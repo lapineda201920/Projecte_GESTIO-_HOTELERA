@@ -32,23 +32,24 @@
             <ChoiceBox fx:id="cTipoReserva" layoutX="134.0" layoutY="127.0" prefHeight="26.0" prefWidth="150.0">
                <items>
                   <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="Avançat" />
-                     <String fx:value="Pendent" />
+                     <String fx:value="Pagament per Avançar" />
+                     <String fx:value="Pagament Pendent" />
                   </FXCollections>
                </items>
             </ChoiceBox>
             <TextField fx:id="tHoraIngres" layoutX="181.0" layoutY="255.0" prefHeight="26.0" prefWidth="103.0" />
             <TextField fx:id="tHoraSortida" layoutX="181.0" layoutY="318.0" prefHeight="26.0" prefWidth="103.0" />
             <TextField fx:id="tClient" disable="true" layoutX="94.0" layoutY="45.0" prefHeight="26.0" prefWidth="150.0" />
-            <Button layoutX="249.0" layoutY="45.0" mnemonicParsing="false" text="..." />
+            <Button layoutX="249.0" layoutY="45.0" mnemonicParsing="false" onAction="#seleccionarClient" text="..." />
             <TextField fx:id="tNumeroHabitacio" disable="true" layoutX="155.0" layoutY="9.0" prefHeight="26.0" prefWidth="89.0" />
-            <Button layoutX="249.0" layoutY="9.0" mnemonicParsing="false" text="..." />
+            <Button layoutX="249.0" layoutY="9.0" mnemonicParsing="false" onAction="#seleccionarHab" text="..." />
             <Label layoutX="14.0" layoutY="200.0" text="Estat Reserva:" />
             <ChoiceBox fx:id="cEstatReserva" layoutX="134.0" layoutY="195.0" prefHeight="26.0" prefWidth="150.0">
                <items>
                   <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="Avançat" />
-                     <String fx:value="Pendent" />
+                     <String fx:value="Anul·lada" />
+                     <String fx:value="En ús" />
+                      <String fx:value="Finalitzada" />
                   </FXCollections>
                </items>
             </ChoiceBox>

@@ -20,9 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -30,6 +28,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class ReservaHabitacionsController implements Initializable {
 
@@ -175,4 +174,40 @@ public class ReservaHabitacionsController implements Initializable {
 
         tNomClient.clear();
     }
+
+    @FXML
+    private void seleccionarHab() throws IOException {
+
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("seleccionarHab.fxml"));
+        Scene scene = new Scene(root);
+        stage.setTitle("Seleccionar Habitació");
+        stage.setScene(scene);
+        stage.showAndWait();
+
+        // LLEGIM LA CONSOLA
+
+        String resultat = "1";
+
+        tNumeroHabitacio.setText(resultat);
+    }
+
+    @FXML
+    private void seleccionarClient() throws IOException {
+
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("seleccionarClient.fxml"));
+        Scene scene = new Scene(root);
+        stage.setTitle("Seleccionar Client");
+        stage.setScene(scene);
+        stage.showAndWait();
+
+        // LLEGIM LA CONSOLA
+
+        String resultat = "1";
+
+        tClient.setText(resultat);
+    }
+
+
 }

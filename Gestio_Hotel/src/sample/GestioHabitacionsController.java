@@ -36,6 +36,8 @@ public class GestioHabitacionsController implements Initializable {
     @FXML
     private TableView<ModelTable> tableID;
     @FXML
+    private TableColumn<ModelTable, Integer> tID;
+    @FXML
     private TableColumn<ModelTable, Integer> tNumero;
     @FXML
     private TableColumn<ModelTable, Integer> tPis;
@@ -70,11 +72,11 @@ public class GestioHabitacionsController implements Initializable {
 
             // PREPAREM LA CONSULTA
             Statement s = conexion.createStatement();
-            ResultSet rs = s.executeQuery ("select Número, Planta, Preu, Estat, Tipus from Habitacions");
+            ResultSet rs = s.executeQuery ("select * from Habitacions");
 
             while (rs.next()) {
 
-                oblist.add(new ModelTable(rs.getInt("Número"), rs.getInt("Planta"), rs.getInt("Preu"), rs.getString("Estat"), rs.getString("Tipus")));
+                oblist.add(new ModelTable(rs.getInt("id_hab"),rs.getInt("Número"), rs.getInt("Planta"), rs.getInt("Preu"), rs.getString("Estat"), rs.getString("Tipus")));
             }
 
             conexion.close();
@@ -84,6 +86,7 @@ public class GestioHabitacionsController implements Initializable {
             e.printStackTrace();
         }
 
+        tID.setCellValueFactory(new PropertyValueFactory<>("id"));
         tNumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
         tPis.setCellValueFactory(new PropertyValueFactory<>("pis"));
         tPreu.setCellValueFactory(new PropertyValueFactory<>("preu"));
@@ -144,11 +147,11 @@ public class GestioHabitacionsController implements Initializable {
 
             // PREPAREM LA CONSULTA
             Statement s = conexion.createStatement();
-            ResultSet rs = s.executeQuery ("select Número, Planta, Preu, Estat, Tipus from Habitacions" + where);
+            ResultSet rs = s.executeQuery ("select * from Habitacions" + where);
 
             while (rs.next()) {
 
-                oblist.add(new ModelTable(rs.getInt("Número"), rs.getInt("Planta"), rs.getInt("Preu"), rs.getString("Estat"), rs.getString("Tipus")));
+                oblist.add(new ModelTable(rs.getInt("id_hab"),rs.getInt("Número"), rs.getInt("Planta"), rs.getInt("Preu"), rs.getString("Estat"), rs.getString("Tipus")));
             }
 
             conexion.close();
@@ -158,6 +161,7 @@ public class GestioHabitacionsController implements Initializable {
             e.printStackTrace();
         }
 
+        tID.setCellValueFactory(new PropertyValueFactory<>("id"));
         tNumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
         tPis.setCellValueFactory(new PropertyValueFactory<>("pis"));
         tPreu.setCellValueFactory(new PropertyValueFactory<>("preu"));
