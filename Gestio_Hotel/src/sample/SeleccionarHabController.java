@@ -52,6 +52,7 @@ public class SeleccionarHabController implements Initializable {
     @FXML
     private javafx.scene.control.Button closeButton;
 
+
     @FXML
     public void initialize(URL location, ResourceBundle resources){
 
