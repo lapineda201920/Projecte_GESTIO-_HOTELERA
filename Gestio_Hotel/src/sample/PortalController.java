@@ -24,42 +24,26 @@ import javax.swing.*;
 public class PortalController {
 
     @FXML
-    private void openGestioHab() throws IOException{
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("gestioHabitacions.fxml"));
-        Scene scene = new Scene(root);
-        stage.setTitle("Gestió Habitacions");
-        stage.setScene(scene);
-        stage.show();
+    private void openGestioHab(ActionEvent event) throws IOException{
+        Escenes escena = new Escenes();
+        escena.open(event,"gestioHabitacions.fxml","Gestió Habitacions");
     }
 
     @FXML
-    private void openGestioClients() throws IOException{
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("gestioClients.fxml"));
-        Scene scene = new Scene(root);
-        stage.setTitle("Gestió Clients");
-        stage.setScene(scene);
-        stage.show();
+    private void openGestioClients(ActionEvent event) throws IOException{
+        Escenes escena = new Escenes();
+        escena.open(event,"gestioClients.fxml","Gestió Clients");
     }
 
     @FXML
-    private void openReservaHab() throws IOException{
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("reservaHabitacions.fxml"));
-        Scene scene = new Scene(root);
-        stage.setTitle("Reserva Habitacions");
-        stage.setScene(scene);
-        stage.show();
+    private void openReservaHab(ActionEvent event) throws IOException{
+        Escenes escena = new Escenes();
+        escena.open(event,"reservaHabitacions.fxml","Reserva Habitacions");
     }
 
     @FXML
-    private void openGestioUsuaris() throws IOException{
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("gestioUsuaris.fxml"));
-        Scene scene = new Scene(root);
-        stage.setTitle("Gestio Usuaris");
-        stage.setScene(scene);
-        stage.show();
+    private void openGestioUsuaris(ActionEvent event) throws IOException{
+        Escenes escena = new Escenes();
+        escena.open(event,"gestioUsuaris.fxml","Gestio Usuaris");
     }
 }

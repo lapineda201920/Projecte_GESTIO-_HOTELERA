@@ -46,91 +46,37 @@ public class GestioUsuarisController implements Initializable {
     @FXML
     public void initialize(URL location, ResourceBundle resources){
 
-        try
-        {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexion = DriverManager.getConnection ("jdbc:mysql://172.17.0.1:3306/Hotel","root", "claveroot");
+        Usuaris usr = new Usuaris(tableIDUsuaris,tUsuari,tNom,tCognoms,tDNI,tEmail,oblist);
 
-            // PREPAREM LA CONSULTA
-            Statement s = conexion.createStatement();
-            ResultSet rs = s.executeQuery ("select `Usuari`, `Nom`, `Cognoms`, `DNI/Passaport`, `e-mail` from `Usuaris` where `estado` = 0");
+        usr.cargarTabla();
 
-            while (rs.next()) {
-
-                oblist.add(new ModelTableUsuaris(rs.getString("Usuari"), rs.getString("Nom"), rs.getString("Cognoms"), rs.getString("DNI/Passaport"), rs.getString("e-mail")));
-            }
-
-            conexion.close();
-
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-        tUsuari.setCellValueFactory(new PropertyValueFactory<>("usuari"));
-        tNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        tCognoms.setCellValueFactory(new PropertyValueFactory<>("cognoms"));
-        tDNI.setCellValueFactory(new PropertyValueFactory<>("dni"));
-        tEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-
-        tableIDUsuaris.setItems(oblist);
     }
 
 
     @FXML
     private void validar(ActionEvent event) throws IOException {
 
-        try
-        {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexion = DriverManager.getConnection ("jdbc:mysql://172.17.0.1:3306/Hotel","root", "claveroot");
+        Usuaris usr = new Usuaris(tableIDUsuaris,tUsuari,tNom,tCognoms,tDNI,tEmail,oblist);
 
-            // PREPAREM LA CONSULTA
-            Statement s = conexion.createStatement();
-            s.executeUpdate ("UPDATE `Usuaris` SET `estado` = '1' WHERE `Usuaris`.`Usuari` = '" + cResposta.getText() + "'");
-
-            conexion.close();
-
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        usr.consultarUsuari(cResposta,"acceptar");
 
         // RECARREGUEM LA PÀGINA PERQUÈ SE'NS MOSTRIN ELS CANVIS
-        Parent blah = FXMLLoader.load(getClass().getResource("gestioUsuaris.fxml"));
-        Scene scene = new Scene(blah);
-        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setTitle("Gestió Usuaris");
-        appStage.setScene(scene);
-        appStage.show();
+
+        Escenes escena = new Escenes();
+        escena.open(event,"gestioUsuaris.fxml","Gestio Usuaris");
     }
 
 
     @FXML
     private void denegar(ActionEvent event) throws IOException {
 
-        try
-        {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexion = DriverManager.getConnection ("jdbc:mysql://172.17.0.1:3306/Hotel","root", "claveroot");
+        Usuaris usr = new Usuaris(tableIDUsuaris,tUsuari,tNom,tCognoms,tDNI,tEmail,oblist);
 
-            // PREPAREM LA CONSULTA
-            Statement s = conexion.createStatement();
-            s.executeUpdate ("DELETE FROM `Usuaris` WHERE `Usuaris`.`Usuari` = '"+ cResposta.getText() + "'");
-
-            conexion.close();
-
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        usr.consultarUsuari(cResposta,"denegar");
 
         // RECARREGUEM LA PÀGINA PERQUÈ SE'NS MOSTRIN ELS CANVIS
-        Parent blah = FXMLLoader.load(getClass().getResource("gestioUsuaris.fxml"));
-        Scene scene = new Scene(blah);
-        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setTitle("Gestió Usuaris");
-        appStage.setScene(scene);
-        appStage.show();
+
+        Escenes escena = new Escenes();
+        escena.open(event,"gestioUsuaris.fxml","Gestió Usuaris");
     }
 }

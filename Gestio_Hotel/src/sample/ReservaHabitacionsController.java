@@ -72,119 +72,32 @@ public class ReservaHabitacionsController implements Initializable {
     private DatePicker dDataIngres, dDataSortida;
 
 
-
     @FXML
     public void initialize(URL location, ResourceBundle resources){
 
-        try
-        {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexion = DriverManager.getConnection ("jdbc:mysql://172.17.0.1:3306/Hotel","root", "claveroot");
+        Reserves reserva = new Reserves(tableIDReserva,tableIDR,tableIDH,tableClient,tableTipo,tableEstat,tableCost,tableDE,tableHE,tableDS,tableHS,tNumeroHabitacio,tClient,tCost,tHoraIngres,tHoraSortida,cTipoReserva,cEstatReserva,dDataIngres,dDataSortida,oblist);
 
-            // PREPAREM LA CONSULTA
-            Statement s = conexion.createStatement();
-            ResultSet rs = s.executeQuery ("select * from Reservas r INNER JOIN Clientes c ON r.fk_client=c.id_client");
-
-            while (rs.next()) {
-
-                oblist.add(new ModelTableReservaHabitacions(rs.getInt("id_reserva"), rs.getInt("fk_hab"), rs.getString("Nombre"), rs.getString("Tipo"), rs.getString("Estat reserva"), rs.getInt("Cost"), rs.getDate("data_entrada"), rs.getString("hora_entrada"), rs.getDate("data_sortida"), rs.getString("hora_sortida")));
-            }
-
-            conexion.close();
-
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-
-        tableIDR.setCellValueFactory(new PropertyValueFactory<>("id_reserva"));
-        tableIDH.setCellValueFactory(new PropertyValueFactory<>("id_habitacio"));
-        tableCost.setCellValueFactory(new PropertyValueFactory<>("cost"));
-        tableClient.setCellValueFactory(new PropertyValueFactory<>("client"));
-        tableTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        tableEstat.setCellValueFactory(new PropertyValueFactory<>("estat"));
-        tableDE.setCellValueFactory(new PropertyValueFactory<>("d_entrada"));
-        tableHE.setCellValueFactory(new PropertyValueFactory<>("hora_entrada"));
-        tableDS.setCellValueFactory(new PropertyValueFactory<>("d_sortida"));
-        tableHS.setCellValueFactory(new PropertyValueFactory<>("hora_sortida"));
-
-        tableIDReserva.setItems(oblist);
+        reserva.cargaTaula();
     }
 
     @FXML
     private void filtrarReserves() throws IOException {
-        System.out.println("Filtrar | Nom Client:" + tNomClient.getText());
 
-        // ESBORREM TOT EL CONTINGUT PREVI DE LA TAULA
-        tableIDReserva.getItems().clear();
-
-        // CREEM UN WHERE, EL QUAL DEPENENT DE LO QUE FILTREM, ANIRÀ AFEGINT + O - FILTRES
-        String where = " where";
-
-        if (!tNomClient.getText().isEmpty()){
-            System.out.println("S'ha filtrat per nom client!");
-            where = where + (" Nombre LIKE '" + tNomClient.getText() + "'");
-        }
-
-
-        // SI HEM FILTRAT RES (SOLAMENT PREMUT EL BOTÓ , PERÒ SENSE POSAR FILTRES), ELIMINEM EL ' where'
-        if (where.equals(" where")){
-            where = "";
-        }
-
-        try
-        {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexion = DriverManager.getConnection ("jdbc:mysql://172.17.0.1:3306/Hotel","root", "claveroot");
-
-            // PREPAREM LA CONSULTA
-            Statement s = conexion.createStatement();
-            ResultSet rs = s.executeQuery ("select * from Reservas r INNER JOIN Clientes c ON r.fk_client=c.id_client" + where);
-
-            while (rs.next()) {
-
-                oblist.add(new ModelTableReservaHabitacions(rs.getInt("id_reserva"), rs.getInt("fk_hab"), rs.getString("Nombre"), rs.getString("Tipo"), rs.getString("Estat reserva"), rs.getInt("Cost"), rs.getDate("data_entrada"), rs.getString("hora_entrada"), rs.getDate("data_sortida"), rs.getString("hora_sortida")));
-            }
-
-            conexion.close();
-
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-
-        tableIDR.setCellValueFactory(new PropertyValueFactory<>("id_reserva"));
-        tableIDH.setCellValueFactory(new PropertyValueFactory<>("id_habitacio"));
-        tableCost.setCellValueFactory(new PropertyValueFactory<>("cost"));
-        tableClient.setCellValueFactory(new PropertyValueFactory<>("client"));
-        tableTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        tableEstat.setCellValueFactory(new PropertyValueFactory<>("estat"));
-        tableDE.setCellValueFactory(new PropertyValueFactory<>("d_entrada"));
-        tableHE.setCellValueFactory(new PropertyValueFactory<>("hora_entrada"));
-        tableDS.setCellValueFactory(new PropertyValueFactory<>("d_sortida"));
-        tableHS.setCellValueFactory(new PropertyValueFactory<>("hora_sortida"));
-
-        tableIDReserva.setItems(oblist);
+        Reserves reserva = new Reserves(tableIDReserva,tableIDR,tableIDH,tableClient,tableTipo,tableEstat,tableCost,tableDE,tableHE,tableDS,tableHS,tNumeroHabitacio,tClient,tCost,tHoraIngres,tHoraSortida,cTipoReserva,cEstatReserva,dDataIngres,dDataSortida,oblist);
+        reserva.filtres(tNomClient);
 
     }
 
     @FXML
     private void netajarFiltre() throws IOException {
-
         tNomClient.clear();
     }
 
     @FXML
-    private void seleccionarHab() throws IOException {
+    private void seleccionarHab(ActionEvent event) throws IOException {
 
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("seleccionarHab.fxml"));
-        Scene scene = new Scene(root);
-        stage.setTitle("Seleccionar Habitació");
-        stage.setScene(scene);
-        stage.showAndWait();
+        Escenes escena = new Escenes();
+        escena.openWait(event,"seleccionarHab.fxml","Seleccionar Habitació");
 
         // LLEGIM LA CONSOLA
 
@@ -194,14 +107,10 @@ public class ReservaHabitacionsController implements Initializable {
     }
 
     @FXML
-    private void seleccionarClient() throws IOException {
+    private void seleccionarClient(ActionEvent event) throws IOException {
 
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("seleccionarClient.fxml"));
-        Scene scene = new Scene(root);
-        stage.setTitle("Seleccionar Client");
-        stage.setScene(scene);
-        stage.showAndWait();
+        Escenes escena = new Escenes();
+        escena.openWait(event,"seleccionarClient.fxml","Seleccionar Client");
 
         // LLEGIM LA CONSOLA
 
@@ -227,28 +136,15 @@ public class ReservaHabitacionsController implements Initializable {
     @FXML
     private void afegirReserva(ActionEvent event) throws IOException {
 
-        try
-        {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexion = DriverManager.getConnection ("jdbc:mysql://172.17.0.1:3306/Hotel","root", "claveroot");
+        Reserves reserva = new Reserves(tableIDReserva,tableIDR,tableIDH,tableClient,tableTipo,tableEstat,tableCost,tableDE,tableHE,tableDS,tableHS,tNumeroHabitacio,tClient,tCost,tHoraIngres,tHoraSortida,cTipoReserva,cEstatReserva,dDataIngres,dDataSortida,oblist);
 
-            // PREPAREM LA CONSULTA
-            Statement s = conexion.createStatement();
-            s.executeUpdate ("INSERT INTO `Reservas` (`id_reserva`, `Tipo`, `Cost`, `Estat reserva`, `data_entrada`, `hora_entrada`, `data_sortida`, `hora_sortida`, `fk_client`, `fk_hab`) VALUES (NULL, '" + cTipoReserva.getValue() + "', '" + tCost.getText() + "', '" + cEstatReserva.getValue() + "', '" + dDataIngres.getValue() + "', '" + tHoraIngres.getText() + "', '" + dDataSortida.getValue() + "', '" + tHoraSortida.getText() + "', '" + tClient.getText() + "', '" + tNumeroHabitacio.getText() + "') ");
-
-            conexion.close();
-
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        reserva.tryReserva();
 
         // RECARREGUEM LA PÀGINA PERQUÈ SE'NS MOSTRIN ELS CANVIS
-        Parent blah = FXMLLoader.load(getClass().getResource("reservaHabitacions.fxml"));
-        Scene scene = new Scene(blah);
-        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setTitle("Reserva Habitacions");
-        appStage.setScene(scene);
-        appStage.show();
+
+        Escenes escena = new Escenes();
+
+        escena.open(event,"reservaHabitacions.fxml","Reserva Habitacions");
+
     }
 }
