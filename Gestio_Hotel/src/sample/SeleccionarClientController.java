@@ -20,6 +20,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
+import static sample.ReservaHabitacionsController.setResultat;
+
 public class SeleccionarClientController  implements Initializable {
 
 
@@ -140,6 +142,8 @@ public class SeleccionarClientController  implements Initializable {
 
     @FXML
     private void returnID() throws IOException {
+
+        ReservaHabitacionsController.setResultat((String) tNumeroID.getText());
 
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();

@@ -73,6 +73,15 @@ public class ReservaHabitacionsController implements Initializable {
 
 
     @FXML
+    private static String resultat = null;
+    @FXML
+    public static void setResultat(String valor){
+        resultat = valor;
+    }
+
+
+
+    @FXML
     public void initialize(URL location, ResourceBundle resources){
 
         Reserves reserva = new Reserves(tableIDReserva,tableIDR,tableIDH,tableClient,tableTipo,tableEstat,tableCost,tableDE,tableHE,tableDS,tableHS,tNumeroHabitacio,tClient,tCost,tHoraIngres,tHoraSortida,cTipoReserva,cEstatReserva,dDataIngres,dDataSortida,oblist);
@@ -99,11 +108,8 @@ public class ReservaHabitacionsController implements Initializable {
         Escenes escena = new Escenes();
         escena.openWait(event,"seleccionarHab.fxml","Seleccionar Habitació");
 
-        // LLEGIM LA CONSOLA
 
-        String resultat = "1";
-
-        tNumeroHabitacio.setText(resultat);
+        tNumeroHabitacio.setText(this.resultat);
     }
 
     @FXML
@@ -112,11 +118,8 @@ public class ReservaHabitacionsController implements Initializable {
         Escenes escena = new Escenes();
         escena.openWait(event,"seleccionarClient.fxml","Seleccionar Client");
 
-        // LLEGIM LA CONSOLA
 
-        String resultat = "1";
-
-        tClient.setText(resultat);
+        tClient.setText(this.resultat);
     }
 
     @FXML

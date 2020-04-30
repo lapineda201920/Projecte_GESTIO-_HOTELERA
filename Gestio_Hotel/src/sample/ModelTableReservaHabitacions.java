@@ -2,7 +2,7 @@ package sample;
 
 import java.util.Date;
 
-public class ModelTableReservaHabitacions {
+public class ModelTableReservaHabitacions  {
 
     int id_reserva, id_habitacio, cost;
     String client, tipo, estat, hora_entrada, hora_sortida;
