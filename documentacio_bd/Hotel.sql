@@ -25,6 +25,8 @@ CREATE TABLE `Usuaris` (
   PRIMARY KEY (`Usuari`)
 );
 
+INSERT INTO `Usuaris` (`Usuari`, `Password`, `Nom`, `Cognoms`, `DNI/Passaport`, `Nacionalitat`, `Telèfon`, `e-mail`, `estado`) VALUES ('admin', 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', '1');
+
 -- --------------------------------------------------------
 
 --
